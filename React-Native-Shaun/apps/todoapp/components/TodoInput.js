@@ -6,7 +6,7 @@ export default TodoInput = ({ submitHandler }) => {
     const [textInput, setTextInput] = useState('')
 
     const inputHandler = (value) => {
-        setTextInput(value)
+        return setTextInput(value)
     }
 
     return (

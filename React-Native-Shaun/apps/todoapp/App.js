@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Alert } from 'react-native';
 import Header from "./components/Header";
 import TodoItem from "./components/TodoItem";
 import TodoInput from "./components/TodoInput";
@@ -16,10 +16,14 @@ export default function App() {
   }
 
   const submitHandler = (text) => {
-    setTodos(old => [
-      { title: text, id: Math.random() },
-      ...old,
-
+    if (text.length > 3) {
+      return setTodos(old => [
+        { title: text, id: Math.random().toString() },
+        ...old,
+      ])
+    }
+    Alert.alert('Ooops', 'Todo should be over 3 characters', [
+      { text: 'Okey', onPress: () => console.log(123) }
     ])
   }
 
